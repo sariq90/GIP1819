@@ -15,7 +15,7 @@ protected:
 public:
 	// Constructors
 	MyString2() : anker{ nullptr } {}
-	MyString2(std::string s);
+	MyString2(const std::string s);
 	MyString2(const MyString2& original); // Copy-Constructor
 	// Destructor
 	~MyString2();

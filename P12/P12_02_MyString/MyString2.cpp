@@ -1,6 +1,6 @@
 #include "MyString2.h"
 
-MyString2::MyString2(std::string s) : anker{ nullptr }
+MyString2::MyString2(const std::string s) : anker{ nullptr }
 {	// Construct from string
 	if (s.length() == 0)
 	{
@@ -13,7 +13,7 @@ MyString2::MyString2(std::string s) : anker{ nullptr }
 }
 // Hidden Methods
 void MyString2::append_internal(char p_data)
-{	
+{
 	if (this->anker == nullptr)
 	{
 		anker = new CharListenKnoten(p_data);
@@ -100,8 +100,13 @@ std::string MyString2::to_string() const
 
 MyString2& MyString2::operator =(const MyString2& original)
 {
+	//delete_internal();
+	//anker = original.deep_copy_internal();
+	//return *this;
+
+	CharListenKnoten* ptr = original.deep_copy_internal();
 	delete_internal();
-	anker = original.deep_copy_internal();
+	anker = ptr;
 	return *this;
 }
 
